@@ -29,4 +29,16 @@ function twoSum(nums, target) {
         }
     }
     return [];
+
+    // Approach 3: HashMap Approach
+
+    const numsToIndex = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (numsToIndex.has(complement)) {
+            return [numsToIndex.get(complement), i];
+        }
+        numsToIndex.set(nums[i], i);
+    }
+    return [];
 }
