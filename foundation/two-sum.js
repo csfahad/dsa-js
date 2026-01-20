@@ -11,4 +11,22 @@ function twoSum(nums, target) {
         }
     }
     return [];
+
+    // Approach 2: Two-Pointer Approach
+
+    const numsWithIndex = nums.map((nums, index) => [nums, index]);
+    numsWithIndex.sort((a, b) => a[0] - b[0]);
+    let start = 0;
+    end = nums.length - 1;
+    while (start < end) {
+        const sum = numsWithIndex[start][0] + numsWithIndex[end][0];
+        if (sum === target) {
+            return [numsWithIndex[start][1], numsWithIndex[end][1]];
+        } else if (sum < target) {
+            start++;
+        } else {
+            end--;
+        }
+    }
+    return [];
 }
